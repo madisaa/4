@@ -71,35 +71,65 @@ client.on("guildMemberAdd", member => {
 شرفنا يا عسل:wink: :kissing_heart:
 
 https://discord.gg/phqdSwc
-joined info-selfie
-! Selfie.                              
+
+! Viper Network.                              
 الدعووة خاصة لك ي قلبي ... [ ${member}  ]
 **`) 
 }).catch(console.error)
 })
 
-const adminprefix = "!";
-const devs = ['490076609215201282','490076609215201282'];
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const prefix = '!'
+ 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+ 
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
+});
+ 
+ 
+ 
 client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-    
-if (message.content.startsWith(adminprefix + 'setgame')) {
+var prefix = "!";
+ 
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == '490076609215201282' ) return;
+ 
+if (message.content.startsWith(prefix + 'setplay')) {
   client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
 } else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+ 
+if (message.content.startsWith(prefix + 'setstream')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/sytra_ayman");
+    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+} else
+ 
+if (message.content.startsWith(prefix + 'setwatch')) {
+client.user.setActivity(argresult, {type:'WATCHING'});
+    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
+} else
+if (message.content.startsWith(prefix + 'setlist')) {
+client.user.setActivity(argresult, {type:'LISTENING'});
+    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
+} else
+ 
+if (message.content.startsWith(prefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+} else
+ 
+if (message.content.startsWith(prefix + 'setavt')) {
+  client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
 }
 });
 
