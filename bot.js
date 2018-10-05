@@ -78,7 +78,7 @@ joined info-selfie
 }).catch(console.error)
 })
 
-const adminprefix = "-";
+const adminprefix = "!";
 const devs = ['490076609215201282','490076609215201282'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
